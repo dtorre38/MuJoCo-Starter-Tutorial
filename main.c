@@ -108,10 +108,6 @@ void scroll(GLFWwindow* window, double xoffset, double yoffset)
 int main(int argc, const char** argv)
 {
 
-    // activate software
-    mj_activate("mjkey.txt");
-
-
     // load and compile model
     char error[1000] = "Could not load binary model";
 
@@ -222,10 +218,9 @@ int main(int argc, const char** argv)
     mjv_freeScene(&scn);
     mjr_freeContext(&con);
 
-    // free MuJoCo model and data, deactivate
+    // free MuJoCo model and data
     mj_deleteData(d);
     mj_deleteModel(m);
-    mj_deactivate();
 
     // terminate GLFW (crashes with Linux NVidia drivers)
     #if defined(__APPLE__) || defined(_WIN32)
