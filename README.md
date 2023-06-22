@@ -31,7 +31,7 @@ Python: https://mujoco.readthedocs.io/en/stable/python.html?highlight=build#buil
 3. Insert template folder inside of mujoco-X.X.X
 4. Navigate to the template folder:
 
-	cd mujoco/mujoco-2.3.5/template
+	cd mujoco/mujoco-X.X.X/template
 
 5. To run via a CMakeLists.txt run “cmake .” in the terminal. Makefile will appear, run "make" in the terminal.
 6. In the terminal run ./main, you should see a ball bounce in MuJoCo. Congratulations, MuJoCo is running on your Mac!
