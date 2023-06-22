@@ -10,10 +10,9 @@ set(CMAKE_C_FLAGS "-w -Wno-implicit-function-declaration -mavx")
 # Find the Mujoco and GLFW3 packages
 find_package(mujoco REQUIRED)
 find_package(glfw3 REQUIRED)
-find_package(GSL REQUIRED)
 
 # Create the main executable
 add_executable(main main.c)
 
 # Link libraries to the main executable
-target_link_libraries(main mujoco::mujoco glfw GSL::gsl GSL::gslcblas m)
+target_link_libraries(main mujoco::mujoco glfw m)
