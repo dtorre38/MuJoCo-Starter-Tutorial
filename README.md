@@ -21,7 +21,7 @@ MuJoCo M-Series Tutorial:
 2. Install MuJoCo:
     1. Clone the mujoco repository from GitHub: 
         1. git clone https://github.com/deepmind/mujoco.git
-    2. Create a new build directory somewhere, and cd into it.
+    2. Create a new build directory inside of the mujoco folder and cd into it.
     	1. mkdir build
      	2. cd build
     3. Configure:
