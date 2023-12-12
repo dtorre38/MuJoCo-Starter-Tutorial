@@ -25,7 +25,7 @@ MuJoCo M-Series Tutorial:
     	1. mkdir build
      	2. cd build
     3. Configure:
-     	1. cmake $PATH_TO_CLONED_REPO
+     	1. cmake ..
     5. Build:
     	1. cmake --build .
     7. Install:
