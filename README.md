@@ -31,6 +31,7 @@ MuJoCo M-Series Tutorial:
     7. Install:
        	1. ```cmake --install .```
 3. Download folder and insert inside of mujoco-X.X.X
+ 	1. ``` git clone https://github.com/dtorre38/MuJoCo-Starter-Tutorial.git ```
 4. Navigate to the template folder:
 	1. ```cd mujoco/mujoco-X.X.X/MuJoCo-Starter-Template-Main```
 5. To run via CMakeLists.txt:
