@@ -30,14 +30,15 @@ MuJoCo M-Series Tutorial:
     	1. ```cmake --build .```
     7. Install:
        	1. ```cmake --install .```
-3. Download folder and insert inside of mujoco-X.X.X
-4. Navigate to the template folder:
+3. Download folder and insert inside of mujoco-X.X.X:
+   	``` git clone https://github.com/dtorre38/MuJoCo-Starter-Tutorial.git ```
+5. Navigate to the template folder:
 	1. ```cd mujoco/mujoco-X.X.X/MuJoCo-Starter-Template-Main```
-5. To run via CMakeLists.txt:
+6. To run via CMakeLists.txt:
 	1. ```cmake .```
  	2. ```make```
   	3. ```./main```
-6. To run via run file:
+7. To run via run file:
 	1. ```chmod +x run_unix```
  	2. ```./run_unix```
-7. A MuJoCo window will appear and a ball will bounce. Congratulations, MuJoCo is running on your Mac!
+8. A MuJoCo window will appear and a ball will bounce. Congratulations, MuJoCo is running on your Mac!
