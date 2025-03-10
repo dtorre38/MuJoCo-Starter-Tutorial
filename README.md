@@ -1,53 +1,116 @@
-# M-Series Mac MuJoCo C Installation Tutorial
+# 🖥️ M-Series Mac MuJoCo C Installation Tutorial
 
-To get MuJoCo up and running on your M-series Mac follow this tutorial.
+This guide will help you **set up MuJoCo on an Apple M-Series Mac** and run a simple C project.
 
-Packages Required, install via terminal:
+---
 
-1. Command line tools
-    1. ```xcode-select —install```
-2. Homebrew -  https://brew.sh
-    1. ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
-3. CMake
-    1. ```brew install cmake```
-4. GLFW
-    1. ```brew install glfw```
+## 📦 Required Packages
+Before installing MuJoCo, install the following packages via **Terminal**:
 
-MuJoCo M-Series Tutorial:
+### 1️⃣ Command Line Tools (Xcode)
+```sh
+xcode-select --install
+```
 
-1. Download the .dmg file: https://github.com/deepmind/mujoco/releases.
-	1. Transfer MuJoCo app into Applications folder.
-	2. Open MuJoCo app. 	
-2. Install MuJoCo:
-    1. Open terminal window and clone the mujoco repository from GitHub: 
-        1. ```git clone https://github.com/deepmind/mujoco.git```
-    2. Create a new build directory inside of the mujoco folder and cd into it.
-    	1. ```mkdir build```
-     	2. ```cd build```
-    3. Configure:
-     	1. ```cmake ..```
-    5. Build:
-    	1. ```cmake --build .```
-    7. Install:
-       	1. ```cmake --install .```
-3. Download folder and insert inside of mujoco-X.X.X
- 	1. ``` git clone https://github.com/dtorre38/MuJoCo-Starter-Tutorial.git ```
-4. Navigate to the template folder:
-	1. ```cd mujoco/mujoco-X.X.X/MuJoCo-Starter-Template-Main```
-5. To run via CMakeLists.txt:
-	1. ```cmake .```
- 	2. ```make```
-  	3. ```./main```
-6. To run via run file:
-	1. ```chmod +x run```
- 	2. ```./run```
-7. A MuJoCo window will appear and a ball will bounce. Congratulations, MuJoCo is running on your Mac!
+### 2️⃣ Homebrew (if not installed) [https://brew.sh]
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-## 📖 Documentation
+### 3️⃣ Install Required Dependencies
+```sh
+brew install cmake glfw
+```
+
+---
+
+### 🛠️ Installing MuJoCo on macOS M-Series
+
+1️⃣ Download & Install MuJoCo
+1.	Download the latest MuJoCo .dmg file → MuJoCo Releases: https://github.com/google-deepmind/mujoco/releases.
+2.	Open the .dmg file and move the MuJoCo app to the Applications folder.
+3.	Launch the MuJoCo app (this is required to complete the setup).
+
+2️⃣ Install MuJoCo via Terminal
+1.	Clone the MuJoCo repository from GitHub:
+```sh
+git clone https://github.com/deepmind/mujoco.git
+```
+2.	Navigate into the MuJoCo directory:
+```sh
+cd mujoco
+```
+3.	Create a build directory and enter it:
+```sh
+mkdir build && cd build
+```
+4.	Configure the build:
+```sh
+cmake ..
+```
+5.	Compile MuJoCo:
+```sh
+cmake --build .
+```
+6.	Install MuJoCo:
+```sh
+cmake --install .
+```
+
+---
+
+### 🚀 Running the MuJoCo Starter Tutorial
+
+1️⃣ Clone This Repository
+
+Navigate to your MuJoCo installation directory and download this tutorial:
+```sh
+git clone https://github.com/dtorre38/MuJoCo-Starter-Tutorial.git
+```
+
+2️⃣ Navigate to the Project Directory
+```sh
+cd mujoco/mujoco-X.X.X/MuJoCo-Starter-Tutorial
+```
+(Replace X.X.X with your installed MuJoCo version.)
+
+---
+
+### ▶️ Running the Code
+
+You can run the project in two ways: using CMake or the run script.
+
+🔹 Option 1: Run via CMake
+```sh
+cmake .
+make
+./build/main model/ball.xml
+```
+
+🔹 Option 2: Run via the run Script
+1.	Give execution permissions (only needed once):
+```sh
+chmod +x run
+chmod +x run_advanced
+```
+2.	Run the simple script:
+```sh
+./run
+```
+
+---
+
+### 🎉 What Happens Next?
+
+A MuJoCo window will appear, and you’ll see a ball bouncing. Congratulations! You’ve successfully set up and run MuJoCo on your Mac! 🎊
+
+---
+
+## 📖 Additional Documentation
 
 This repository includes additional tutorials:
 
 - **VSCode Setup Guide** → [docs/vscode-guide/README.md](docs/vscode-guide/README.md)
 - **GitHub Usage Guide** → [docs/github-guide/README.md](docs/github-guide/README.md)
 
-Each guide contains a PDF and instructions for setup.
+Each guide contains a PDF and setup-by-step instructions.
