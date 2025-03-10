@@ -110,7 +110,7 @@ A MuJoCo window will appear, and you’ll see a ball bouncing. Congratulations! 
 
 This repository includes additional tutorials:
 
-- **VSCode Setup Guide** → [docs/vscode-guide/README.md](docs/vscode-guide/README.md)
-- **GitHub Usage Guide** → [docs/github-guide/README.md](docs/github-guide/README.md)
+- **VSCode Setup Guide** → [docs/vscode-guides/README.md](docs/vscode-guide/README.md)
+- **GitHub Usage Guide** → [docs/github-guides/README.md](docs/github-guide/README.md)
 
 Each guide contains a PDF and setup-by-step instructions.
