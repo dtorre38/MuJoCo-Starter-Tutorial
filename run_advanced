@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Define the project root directory relative to this script location
+PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+# Ensure a clean build directory
+if [ -d "${PROJECT_ROOT}/build" ]; then
+    echo "Removing existing build directory..."
+    rm -rf "${PROJECT_ROOT}/build"
+fi
+
+mkdir -p "${PROJECT_ROOT}/build"
+
+# Change into the build directory
+cd "${PROJECT_ROOT}/build" || exit
+
+# Configure the project where source is in the parent directory
+cmake .. || { echo "CMake configuration failed!"; exit 1; }
+
+# Detect number of CPU cores for parallel compilation
+if command -v nproc &>/dev/null; then
+    CORES=$(nproc)  # Linux
+elif command -v sysctl &>/dev/null; then
+    CORES=$(sysctl -n hw.ncpu)  # macOS
+else
+    CORES=1  # Default to 1 core if detection fails
+fi
+
+# Build the project using detected number of CPU cores
+make -j"$CORES" || { echo "Build failed!"; exit 1; }
+
+# Return to the project root directory
+cd "${PROJECT_ROOT}" || exit
+
+# Run the compiled executable
+exec ./build/main model/ball.xml

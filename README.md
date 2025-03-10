@@ -39,6 +39,15 @@ MuJoCo M-Series Tutorial:
  	2. ```make```
   	3. ```./main```
 6. To run via run file:
-	1. ```chmod +x run_unix```
- 	2. ```./run_unix```
+	1. ```chmod +x run```
+ 	2. ```./run```
 7. A MuJoCo window will appear and a ball will bounce. Congratulations, MuJoCo is running on your Mac!
+
+## 📖 Documentation
+
+This repository includes additional tutorials:
+
+- **VSCode Setup Guide** → [docs/vscode-guide/README.md](docs/vscode-guide/README.md)
+- **GitHub Usage Guide** → [docs/github-guide/README.md](docs/github-guide/README.md)
+
+Each guide contains a PDF and instructions for setup.
