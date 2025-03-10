@@ -35,8 +35,9 @@ chmod +x <your_script_name>
 
 ## Step 3: Configure Debugging (launch.json)
 1. Open **Command Palette** (`Ctrl + Shift + P`).
-2. Search for **"C++ (GDB/LLDB): Create launch.json"**.
-3. Modify `launch.json` inside `.vscode/`:
+2. Search for **"Debug: Add Configuration..."**.
+3. Select **"C++ (GDB/LLDB)"**.
+4. Modify `launch.json` inside `.vscode/`:
 
 ```json
 {
