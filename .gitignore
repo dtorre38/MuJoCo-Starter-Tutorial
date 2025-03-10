@@ -63,8 +63,3 @@ Makefile
 
 # CMake build directory
 /build/
-
-# Ignore temporary files inside docs/
-docs/**/*.aux
-docs/**/*.log
-docs/**/*.out
