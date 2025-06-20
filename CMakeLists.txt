@@ -30,7 +30,7 @@ if(APPLE)
     target_link_libraries(main "-framework Cocoa" "-framework OpenGL" "-framework IOKit")
 endif()
 
-# Set the output directory inside the build folder
+# Set the output directory to bin folder following best practices
 set_target_properties(main PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin"
 )

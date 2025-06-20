@@ -3,19 +3,43 @@
 # Define the project root directory relative to this script location
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-# Ensure a clean build directory
-if [ -d "${PROJECT_ROOT}/build" ]; then
-    echo "Removing existing build directory..."
-    rm -rf "${PROJECT_ROOT}/build"
+# Check for --cmake or --clean flags
+FORCE_CMAKE=false
+CLEAN_BUILD=false
+
+for arg in "$@"; do
+    case $arg in
+        --cmake)
+            FORCE_CMAKE=true
+            ;;
+        --clean)
+            CLEAN_BUILD=true
+            ;;
+    esac
+done
+
+# Clean build directory if requested
+if [ "$CLEAN_BUILD" = true ]; then
+    if [ -d "${PROJECT_ROOT}/build" ]; then
+        echo "Removing existing build directory..."
+        rm -rf "${PROJECT_ROOT}/build"
+    fi
 fi
 
+# Create build directory
 mkdir -p "${PROJECT_ROOT}/build"
 
 # Change into the build directory
 cd "${PROJECT_ROOT}/build" || exit
 
-# Configure the project where source is in the parent directory
-cmake .. || { echo "CMake configuration failed!"; exit 1; }
+# Only run CMake if necessary
+if [ "$FORCE_CMAKE" = true ] || [ "$CLEAN_BUILD" = true ] || [ ! -f "CMakeCache.txt" ] || [ "../CMakeLists.txt" -nt "CMakeCache.txt" ]; then
+    echo "Running CMake configuration..."
+    rm -f CMakeCache.txt
+    cmake .. || { echo "CMake configuration failed!"; exit 1; }
+else
+    echo "Skipping CMake (use './run_advanced --cmake' to force, or '--clean' for clean build)"
+fi
 
 # Detect number of CPU cores for parallel compilation
 if command -v nproc &>/dev/null; then
@@ -32,5 +56,5 @@ make -j"$CORES" || { echo "Build failed!"; exit 1; }
 # Return to the project root directory
 cd "${PROJECT_ROOT}" || exit
 
-# Run the compiled executable
-exec ./build/main model/ball.xml
+# Run the compiled executable from the bin folder
+exec ./bin/main model/ball.xml

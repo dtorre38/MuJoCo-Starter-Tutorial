@@ -3,12 +3,24 @@
 # Define the project root directory
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+# Check for --cmake flag
+FORCE_CMAKE=false
+if [ "$1" = "--cmake" ]; then
+    FORCE_CMAKE=true
+fi
+
 # Create the build directory if it doesn't exist
 mkdir -p "${PROJECT_ROOT}/build"
 cd "${PROJECT_ROOT}/build" || exit 1
 
-# Run CMake to configure the project
-cmake .. || { echo "CMake configuration failed!"; exit 1; }
+# Only run CMake if necessary
+if [ "$FORCE_CMAKE" = true ] || [ ! -f "CMakeCache.txt" ] || [ "../CMakeLists.txt" -nt "CMakeCache.txt" ]; then
+    echo "Running CMake configuration..."
+    rm -f CMakeCache.txt
+    cmake .. || { echo "CMake configuration failed!"; exit 1; }
+else
+    echo "Skipping CMake (use './run --cmake' to force)"
+fi
 
 # Build the project
 make || { echo "Build failed!"; exit 1; }
@@ -16,5 +28,5 @@ make || { echo "Build failed!"; exit 1; }
 # Go back to the project root
 cd "${PROJECT_ROOT}" || exit 1
 
-# Run the compiled program
-./build/main model/ball.xml
+# Run the compiled program from the bin folder
+./bin/main model/ball.xml

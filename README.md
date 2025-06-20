@@ -1,6 +1,6 @@
-# 🖥️ M-Series Mac MuJoCo C Installation Tutorial
+# 🖥️ Mac MuJoCo C Installation Tutorial
 
-This guide will help you **set up MuJoCo on an Apple M-Series Mac** and run a simple C project.
+This guide will help you **set up MuJoCo on macOS** (both M-Series and Intel Macs) and run a simple C project.
 
 ---
 
@@ -22,9 +22,15 @@ xcode-select --install
 brew install cmake glfw
 ```
 
+### 4️⃣ Link GLFW (Required for some systems)
+```sh
+brew link glfw
+```
+**Note:** This step is especially important on Intel Macs and may be required on some M-Series Macs as well.
+
 ---
 
-### 🛠️ Installing MuJoCo on macOS M-Series
+### 🛠️ Installing MuJoCo on macOS (M-Series & Intel)
 
 1️⃣ Download & Install MuJoCo
 1.	Download the latest MuJoCo .dmg file → MuJoCo Releases: https://github.com/google-deepmind/mujoco/releases.
@@ -84,7 +90,7 @@ You can run the project in two ways: using CMake or the run script.
 ```sh
 cmake .
 make
-./build/main model/ball.xml
+./bin/main model/ball.xml
 ```
 
 🔹 Option 2: Run via the run Script
