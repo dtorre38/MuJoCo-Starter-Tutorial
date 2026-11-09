@@ -58,10 +58,12 @@ cmake ..
 ```sh
 cmake --build .
 ```
-6.	Install MuJoCo:
+6.	Install MuJoCo (`sudo` is needed because MuJoCo installs into `/usr/local`; enter your Mac password when asked):
 ```sh
-cmake --install .
+sudo cmake --install .
 ```
+
+**Note:** This tutorial works with MuJoCo 2.3.3 and newer, including the 3.x and 4.x releases.
 
 ---
 
@@ -69,16 +71,15 @@ cmake --install .
 
 1️⃣ Clone This Repository
 
-Navigate to your MuJoCo installation directory and download this tutorial:
+You can clone this tutorial into any folder you like (it does not need to be inside the MuJoCo folder):
 ```sh
 git clone https://github.com/dtorre38/MuJoCo-Starter-Tutorial.git
 ```
 
 2️⃣ Navigate to the Project Directory
 ```sh
-cd mujoco/mujoco-X.X.X/MuJoCo-Starter-Tutorial
+cd MuJoCo-Starter-Tutorial
 ```
-(Replace X.X.X with your installed MuJoCo version.)
 
 ---
 

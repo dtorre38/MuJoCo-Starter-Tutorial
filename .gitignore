@@ -66,3 +66,9 @@ Makefile
 
 # CMake build directory
 /build/
+
+# Local AI agent context (not for GitHub)
+CONTEXT.md
+CLAUDE.md
+CLAUDE.local.md
+.claude/

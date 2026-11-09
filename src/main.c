@@ -37,6 +37,17 @@ float_t ctrl_update_freq = 100;
 mjtNum last_update = 0.0;
 mjtNum ctrl;
 
+// move the camera; works with old and new MuJoCo versions
+// (MuJoCo 3.11.0 removed the scene argument from mjv_moveCamera)
+void move_camera(int action, mjtNum dx, mjtNum dy)
+{
+#if mjVERSION_HEADER >= 3011000
+    mjv_moveCamera(m, action, dx, dy, &cam);
+#else
+    mjv_moveCamera(m, action, dx, dy, &scn, &cam);
+#endif
+}
+
 // keyboard callback
 void keyboard(GLFWwindow* window, int key, int scancode, int act, int mods)
 {
@@ -92,7 +103,7 @@ void mouse_move(GLFWwindow* window, double xpos, double ypos)
         action = mjMOUSE_ZOOM;
 
     // move camera
-    mjv_moveCamera(m, action, dx/height, dy/height, &scn, &cam);
+    move_camera(action, dx/height, dy/height);
 }
 
 
@@ -100,7 +111,7 @@ void mouse_move(GLFWwindow* window, double xpos, double ypos)
 void scroll(GLFWwindow* window, double xoffset, double yoffset)
 {
     // emulate vertical mouse motion = 5% of window height
-    mjv_moveCamera(m, mjMOUSE_ZOOM, 0, -0.05*yoffset, &scn, &cam);
+    move_camera(mjMOUSE_ZOOM, 0, -0.05*yoffset);
 }
 
 
@@ -121,7 +132,7 @@ int main(int argc, const char** argv)
         else
             m = mj_loadXML(argv[1], 0, error, 1000);
     if( !m )
-        mju_error_s("Load model error: %s", error);
+        mju_error("Load model error: %s", error);
 
     // make data
     d = mj_makeData(m);
